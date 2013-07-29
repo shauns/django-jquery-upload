@@ -23,6 +23,13 @@ class MyUploadView(BaseUploadContentView):
 
 By providing the model class, the name of the field for the file and a temp storage instance, you'll recieve a view that can accept the data POSTed by jQuery file upload.
 
+Extra Fields and Custom Data
+----------------------------
+
+The library fits nicely with any additional fields you might have on your model:
+* To send back extra data, override `make_upload_response`
+* To store additional data on your model, override `decorate_instance`
+
 Chunked Uploads
 ---------------
 
