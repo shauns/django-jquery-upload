@@ -14,5 +14,8 @@ setup(
     license='MIT',
     author='Shaun Stanworth',
     author_email='',
-    description=''
+    description='',
+    install_requires=[
+        'Django >= 1.3',
+    ]
 )
