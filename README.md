@@ -1,7 +1,7 @@
 django-jquery-upload
 ====================
 
-Django app for supporting the jQuery file upload library. Designed to be flexibility adapted to different models.
+Django app for supporting the [jQuery file upload](https://github.com/blueimp/jQuery-File-Upload) library. Designed to be flexibility adapted to different models.
 
 Usage
 -----
@@ -36,3 +36,7 @@ Using this on your site
 1. Set-up your custom view
 2. Hook it in to your URLs
 3. Set the `action` of the `<form>` element on your page to this new URL.
+
+Thanks
+------
+Inspiration from [Morsels by stholmes](https://github.com/stholmes/Morsels)
