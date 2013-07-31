@@ -6,8 +6,6 @@ from django.core.cache import cache
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse
 from django.utils._os import safe_join
-from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import View
 
 # Get an instance of a logger
@@ -96,10 +94,6 @@ class BaseUploadContentView(JSONResponseMixin, View):
     temp_storage = None
     file_field_name = None
     uploaded_files_parameter = u'files'
-
-    @method_decorator(csrf_exempt)
-    def dispatch(self, request, *args, **kwargs):
-        return super(BaseUploadContentView, self).dispatch(request, *args, **kwargs)
 
     def post(self, request, **kwargs):
         blob_file = request.FILES.get(self.uploaded_files_parameter, None)
