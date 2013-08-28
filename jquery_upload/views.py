@@ -477,7 +477,7 @@ class PartialUploadCacheMixin(object):
         self._store_key(self._byte_count_key(file_id), count)
 
     def _stored_name_key(self, expected_file_name):
-        return '%s::%s::%s::file_id' % (self.request.session.session_key, self.model.__name__, expected_file_name)
+        return self._key_sanitise('%s::%s::%s::file_id' % (self.request.session.session_key, self.model.__name__, expected_file_name))
 
     def _store_key(self, key, value):
         cache.set(key, value)
@@ -493,4 +493,15 @@ class PartialUploadCacheMixin(object):
             pass
 
     def _byte_count_key(self, file_id):
-        return '%s::%s::uploaded_byte_count' % (self.request.session.session_key, file_id)
+        return self._key_sanitise('%s::%s::uploaded_byte_count' % (self.request.session.session_key, file_id))
+
+    def _key_sanitise(self, key):
+        """
+        Clean up memcache key, removing the most troublesome problems
+
+        @param key: Key to correct
+        @type key: str
+        @return: Corrected key string
+        @rtype: str
+        """
+        return key.replace(' ', ':')
